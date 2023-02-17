@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F2CD5C;
+}
+
+.container {
+    text-align: center;
+    margin-top: 2%;
+}
+
+.formelement {
+    margin: 10px;
+    font-size: 20px;
+}
+
+.btn {
+    font-size: 18px;
+    padding: 7px 14px;
+    margin-top: 10px;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    padding: 10px;
+    font-size: 15px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+#errors{
+    color: red;
+    margin-left: 12px;
+}
+
+#success{
+    margin-top: 12px;
+    margin-left: 12px;
+    font-size: large;
+    color: #00337C;
+    text-align: center;
+}

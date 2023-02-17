@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <title>Reaction Timer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #heading {
+            text-align: center;
+            margin: 15px;
+        }
+
+        #para {
+            text-align: center;
+        }
+
+        #color {
+            height: 200px;
+            width: 200px;
+            background-color: aquamarine;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="heading">Test your Reactions !</h1>
+    <p id="para">Click on the boxes as quickly as you can</p>
+    <div id="color"></div>
+</body>
+
+<script>
+    var startTime = new Date().getTime();
+
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    function move() {
+        var left = Math.random() * 300;
+        var top = Math.random() * 300;
+        var width_height = (Math.random() * 300) + 100;
+        document.getElementById('color').style.left = left;
+        document.getElementById('color').style.top = top;
+        document.getElementById('color').style.width = width_height;
+        document.getElementById('color').style.height = width_height;
+        document.getElementById('color').style.display = "block";
+        document.getElementById('color').style.backgroundColor = getRandomColor();
+        startTime = new Date().getTime();
+    }
+
+    move();
+
+    document.getElementById('color').onclick = function () {
+        document.getElementById('color').style.display = "none";
+        var endTime = new Date().getTime();
+        var timeTaken = (endTime - startTime) / 1000;
+        alert("Time taken : " + timeTaken + " seconds");
+        move();
+    }
+
+</script>
+
+</html>

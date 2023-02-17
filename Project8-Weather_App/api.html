@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="./api.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <h2><ion-icon name="location"></ion-icon><span id="location"></span></h2>
+            <h6 id="weather"></h6>
+            <h4><span id="temp"></span><sup>o</sup>C</h4>
+            <img src="" id="icon" alt="">
+            <button onclick="window.location.reload()" class="refresh"><ion-icon
+                    name="refresh-circle"></ion-icon></button>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+<script>
+    link = "https://api.openweathermap.org/data/2.5/weather?q=dehli&appid=007aadbd68248ed418c3dfb3e1d8aa4d";
+    var request = new XMLHttpRequest();
+    request.open('GET', link, true);
+    request.onload = function () {
+        var obj = JSON.parse(this.response);
+        console.log(obj);
+        document.getElementById('weather').innerHTML = obj.weather[0].description;
+        document.getElementById('location').innerHTML = obj.name;
+        document.getElementById('temp').innerHTML = Math.round(obj.main.temp - 273.15);
+        document.getElementById('icon').src = "https://openweathermap.org/img/w/" + obj.weather[0].icon + ".png"
+    }
+    if (request.status >= 200 && request.status < 400) {
+        var temp = obj.main.temp
+    }
+    else {
+        console.log("The city data is not available");
+    }
+    request.send();
+</script>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Todo List App</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="box">
+        <h1>Todo List</h1>
+    </div>
+    <div class="box">
+
+        <form action="/" method="POST">
+            <input type="text" name="inputElement" placeholder="Enter your task">
+            <button type="submit">+</button>
+            <% for(i=0; i < loopArr.length; i++){%>
+                <div class="item">
+                    <input type="checkbox">
+                    <p>
+                        <%= loopArr[i] %>
+                    </p>
+                </div>
+                <% }%>
+        </form>
+    </div>
+</body>
+
+</html>

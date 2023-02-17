@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <title>Disappearing Circles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .circle {
+            height: 50px;
+            width: 50px;
+            border-radius: 100%;
+            margin: 10px;
+        }
+
+        #red {
+            background-color: red;
+        }
+
+        #blue {
+            background-color: blue;
+        }
+
+        #green {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="circle" id="red"></div>
+        <div class="circle" id="blue"></div>
+        <div class="circle" id="green"></div>
+        <button type="submit" id="submit">Click me</button>
+    </div>
+    <script>
+        document.getElementById('submit').onclick = function () {
+            document.getElementById('red').style.display = "none";
+            document.getElementById('blue').style.display = "none";
+            document.getElementById('green').style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

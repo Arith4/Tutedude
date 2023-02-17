@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./jquery-3.6.3.min.js"></script>
+</head>
+
+<body>
+    <div id="errors"></div>
+    <div id="success"></div>
+
+    <div class="container">
+
+        <h1>Sign Up Form</h1>
+
+        <div class="formelement">
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" placeholder="Enter email-addresses" autocomplete="off">
+        </div>
+
+        <div class="formelement">
+            <label for="email">Phone No.</label>
+            <input type="text" id="phone" name="phone" placeholder="Enter phone number" autocomplete="off">
+        </div>
+
+        <div class="formelement">
+            <label for="email">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter password" autocomplete="off">
+        </div>
+
+        <div class="formelement">
+            <label for="email">Confirm Password</label>
+            <input type="password" id="cpassword" name="cpassword" placeholder="Enter confirm password"
+                autocomplete="off">
+        </div>
+
+        <button class="btn" type="submit">Submit</button>
+
+    </div>
+
+    <script>
+
+        var errormessage = "";
+        var missingfield = "";
+
+        function isEmail(email) {
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            return regex.test(email);
+        }
+
+        $('.btn').click(function () {
+
+            if ($('#email').val() == "") {
+                missingfield += `<p>Email not filled</p>`
+            }
+
+            if ($('#phone').val() == "") {
+                missingfield += `<p>Phone no. not filled</p>`
+            }
+
+            if ($('#password').val() == "") {
+                missingfield += `<p>Password not filled</p>`
+            }
+
+            if ($('#cpassword').val() == "") {
+                missingfield += `<p>Confirm Password not filled</p>`
+            }
+
+            if (isEmail($('#email').val()) === false) {
+                errormessage += `<p>Email is invalid</p>`
+            }
+
+            if ($.isNumeric($('#phone').val()) === false) {
+                errormessage += `<p>Phone Number is invalid</p>`
+            }
+
+            if ($('#password').val() !== $('#cpassword').val()) {
+                errormessage += `<p>Password does not match</p>`
+            }
+
+            if (errormessage == "") {
+                $('#success').html('You are successfully registered')
+            }
+            else {
+                $('#errors').html(errormessage + missingfield);
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
